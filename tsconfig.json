@@ -15,21 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
-    "paths": {
-      "src/*": ["./src/*"],
-      "components/*": ["./src/components/*"],
-      "common/*": ["./src/components/common/*"],
-      "containers/*": ["./src/containers/*"],
-      "pages/*": ["./src/pages/*"],
-      "modules/*": ["./src/modules/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "hoc/*": ["./src/hoc/*"],
-      "utils/*": ["./src/utils/*"],
-      "types/*": ["./src/types/*"]
-    },
+
     "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.paths.json"
 }
