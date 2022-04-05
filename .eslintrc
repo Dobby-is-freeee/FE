@@ -39,7 +39,7 @@
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     // console 룰
-    "no-console": "off",
+    "no-console": "warn",
     // hooks의 의존성배열이 충분하지 않을때 강제로 의존성을 추가하는 규칙을 완화
     // export const 문을 쓸때 에러를 내는 규칙 해제
     "import/prefer-default-export": "off",
