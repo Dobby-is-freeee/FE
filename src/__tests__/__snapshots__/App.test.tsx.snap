@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> 컴포넌트 스냅샷을 찍자. 1`] = `
+<div>
+  <div>
+    농구 프로젝트
+  </div>
+</div>
+`;

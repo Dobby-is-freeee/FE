@@ -16,14 +16,14 @@ jobs:
             uses: actions/setup-node@v1
             with:
               node-version: ${{ matrix.node-version }}
-          - name: ======== YANR INSTALL ========
+          - name: ======== YANR INSTALL 🧰 ========
             run: |
               npm i -g yarn &&
               yarn install --frozen-lockfile
-          - name: ======== TEST START ========
+          - name: ======== TEST START 🚀 ========
             run: |
               yarn test
-          - name: ======== TEST FAIL ========
+          - name: ======== TEST FAIL 😨 ========
             uses: actions/github-script@v5
             with:
               github-token: ${{secrets.GITHUB_TOKEN}}
