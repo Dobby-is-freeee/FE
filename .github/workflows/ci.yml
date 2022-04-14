@@ -3,7 +3,6 @@ name: REACT CI
 on:
   pull_request:
       branches: ["main","develop"]
-
 jobs:
     Jest:
         runs-on: [ubuntu-latest] 
@@ -20,6 +19,23 @@ jobs:
             run: |
               npm i -g yarn &&
               yarn install --frozen-lockfile
+          - name: ======== YANR BUILD 🔧 ========
+            run : |
+              yarn build
+          - name: ======== BUILD FAIL 😨 ========
+            uses: actions/github-script@v5
+            with:
+              github-token: ${{secrets.GITHUB_TOKEN}}
+              script: |
+                const ref = "${{github.ref}}"
+                const pull_number = Number(ref.split("/")[2])
+                await  github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: '🔥 빌드 실패했습니다. 코드를 확인해주세요.'
+                }) 
+            if: failure()
           - name: ======== TEST START 🚀 ========
             run: |
               yarn test
@@ -35,9 +51,9 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   body: '🔥 테스트 코드를 확인해주세요.'
-                })
+                }) 
             if: failure()
-          - name: ======== TEST SUCCESS ========
+          - name: ======== CI SUCCESS 🟢 ========
             uses: actions/github-script@v5
             with:
               github-token: ${{secrets.GITHUB_TOKEN}}
@@ -48,7 +64,7 @@ jobs:
                   issue_number: context.issue.number,
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  body: '🚀 테스트에 성공했습니다!!'
+                  body: '🚀 CI를 성공했습니다!!'
                 })
             if: success()
 
